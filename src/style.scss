@@ -1,0 +1,182 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --ct-nav-left-width:230px;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+.side-bar{
+width: calc(40% - 230px);
+  max-width: 230px;
+  min-width: calc(230px - 100%);
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  top: 84px;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+    @media only screen and (max-width:768px) and (min-width: 320px){
+    .sidebar {
+    width: 100%;
+    max-width: 100%;
+    top: 68px;
+    }
+}
+}
+
+.side-bar{
+    .navbar-toggler{
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+}
+
+.content-col{
+    margin-left: 230px;
+    padding: 24px;
+}
+.side-bar{
+    &.closed{
+        transform: translate(-100%);
+    }
+    &.open{
+        transform: translate(0%);
+        top: 0;
+        @media (max-width:768px){
+            top: 0;
+        }
+    }
+}
+.side-bar{
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                &:hover{
+                    transition: all 0.3s ease-in-out;
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+}
+
+.toggle-button {
+    position: fixed;
+    top: 0;
+    left:225px;
+    z-index: 1000;
+    border: none;
+    padding: 27px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    @media (max-width:768px){
+        padding: 19px 20px;
+    }
+  }
+
+  /* General styles */
+.nav-header {
+    top: 0;
+    left: 0;
+    position: sticky;
+    margin-left: var(--ct-nav-left-width);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    .topbar{
+        
+    }
+  }
+  
+.sticky-header {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+.default-header {
+    transition: all 0.3s ease-in-out;
+}
+  .header-main{
+    height: 80px;
+    z-index: 100;
+    position: relative;
+  }
+
+  .dash-board{
+    .card{
+        color: var(--my-txt-color);
+    }
+  }
+
+  @property --my-bg-color{
+    syntax: '<color>';
+    inherits: true;
+    initial-value: blue;
+  }
+
+  @property --my-txt-color{
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #fff;
+  }
+
+.info-login-screen{
+    position: relative;
+    width: 100dvw;
+    .info-login{
+        height: 100dvh;
+        .info-login-data{
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 100dvh;
+            .info-login-bg{
+    background: linear-gradient(45deg, #264164 10%, #661C67 100%, #264164 100%);
+    padding: 3vw 2vw;
+    border-radius: 4cqw;
+    container-type: inline-size;
+    h1{
+        color: rgb(255,255,255);
+    }
+    label{
+        color: rgb(255,255,255);
+    }
+    .login-btn{
+        border-radius: 1cqw;
+        border: solid 1px rgb(255,255,255, .5);
+        background: transparent;
+        width: 100%;
+        container-type: inline-size;
+    }
+            }
+        }
+    }
+}
+.card{
+    .recharts-wrapper{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
