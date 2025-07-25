@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext()
@@ -5,6 +6,17 @@ export const ThemeContext = createContext()
 export const ThemeProvider = ({children})=>{
 
     const [theme, setTheme] = useState(()=>localStorage.getItem('app-theme' || 'light'))
+
+    // global-api-integration //
+
+    const api = axios.create({
+        baseURL:'https://jsonplaceholder.typicode.com/',
+        headers:{
+             'Content-Type': 'application/json'
+        }
+    })
+
+    // end //
 
     useEffect(()=>{
         // document.documentElement.setAttribute('data-bs-theme', theme)
@@ -20,7 +32,7 @@ export const ThemeProvider = ({children})=>{
     }, [theme])
     
     return(
-        <ThemeContext.Provider value={{theme, setTheme}}>
+        <ThemeContext.Provider value={{theme, setTheme, api}}>
             {children}
         </ThemeContext.Provider>
     )
