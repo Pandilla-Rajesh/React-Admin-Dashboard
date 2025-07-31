@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ThemeProvider from '../ThemeProvider/ThemeProvider'
-import { useNavigate } from 'react-router-dom'
+import { data, useNavigate } from 'react-router-dom'
 import { Button, Col, Container, FormControl, Row } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import { object } from 'yup';
@@ -13,6 +13,8 @@ const Login = () => {
     }
 
     const [login, setLogin] = useState({...resetForm})
+    const [loading, setLoading] = useState(true)
+    const [alltodos, setAllTodos] = useState([])
 
     const navigate = useNavigate()
 
@@ -51,6 +53,66 @@ const Login = () => {
        setLogin(resetForm)
     }
 
+        useEffect(()=>{
+        setLoading(true)
+        fetch('https://jsonplaceholder.typicode.com/todos').then((res) => res.json())
+        .then((data)=>{
+            console.log(data, 'todo data displayed')
+        }).catch((err)=>{
+            console.log(err)
+        }).finally(()=>{
+            setLoading(false)
+        })
+    },[])
+
+    useEffect(()=>{
+
+        const fetchData = async()=>{
+            setLoading(true)
+            try{
+
+                const response = await Promise.all([
+                    fetch('https://jsonplaceholder.typicode.com/todos'),
+                    fetch('https://jsonplaceholder.typicode.com/todos'),
+                    // fetch('https://jsonplaceholder.typicode.com/todos'),
+                ])
+
+            const dataArray = await Promise.all(response.map((res)=>res.json()))
+            const combinedTodos = dataArray.flat()
+            setAllTodos(combinedTodos)
+            console.log(combinedTodos, 'combined todos data')
+
+            }catch(err){
+                console.log(err)
+            }finally{
+                setLoading(false)
+            }
+        }
+        fetchData()
+    }, [])
+
+    useEffect(()=>{
+
+        const dataFetch=async() => {
+            
+            const res1 = Promise.all([
+            {name:'Rajesh Pandilla', age:38, role:'SSE UI Developer', email:'raj@gmail.com'},
+            {name:'Ushasri', age:34, role:'Home Maker', email:'usha@gmail.com'}
+        ])
+
+        const res2 = Promise.all([
+            {name:'Aadhya', age:9, role:'child1', email:'aadhya@gmail.com'},
+            {name:'Arjun', age:4, role:'child2', email:'arjun@gmail.com'}
+        ])
+
+        const ndata = await Promise.all([res1, res2])
+        const combinedData = ndata.flat()
+        setAllTodos(combinedData)
+        console.log(combinedData, 'array of objects')
+        }
+  dataFetch()
+    }, [])
+
     return (
         <main>
             <section className='info-login-screen'>
@@ -73,6 +135,10 @@ const Login = () => {
                                         onChange={handleChange} placeholder='type your password' />
                                         {error.password && <small className='text-danger'>{error.password}</small>}
                                     </Form.Group>
+                                    <div>
+                                        {/* {loading? 'loading...' : <pre>{JSON.stringify(alltodos, null , 2)}</pre>} */}
+                                        {/* {loading ? 'Loading' ? : <pre>{JSON.stringify(alltodos, null, 2)}</pre>} */}
+                                    </div>
                                   <div className=''>
                                     <Button type='submit' className='btn login-btn'>Submit</Button>
                                   </div>
