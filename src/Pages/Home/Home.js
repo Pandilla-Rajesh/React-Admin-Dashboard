@@ -1,5 +1,5 @@
-import React from 'react'
-import LazyLoadComponent from '../../Components/LazyLoadComponent/LazyLoadComponent'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../ContextMain'
 
 const Home = () =>{
     return(
@@ -15,9 +15,33 @@ const Home = () =>{
             </article>
 
             <article className='container'>
-                <LazyLoadComponent/>
+                <div className='box-wrap'>
+                    <p>
+                        box inside the wrapper and add the span tag
+                        <span className="name">
+                            inside the span tag add class
+                        </span>
+                    </p>
+                </div>
+                <ColorButton/>
             </article>
         </section>
+    )
+}
+
+const ColorButton = () =>{
+
+    const {bgcolor, toggleColor} = useContext(ThemeContext)
+
+    return(
+        <>
+        <div>
+            <button onClick={toggleColor}
+            style={{backgroundColor:bgcolor,
+                color: bgcolor === 'white' ? 'block' : 'red'
+            }}>Toggle Color</button>
+        </div>
+        </>
     )
 }
 

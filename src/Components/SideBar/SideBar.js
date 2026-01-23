@@ -5,29 +5,30 @@ import { faAnglesRight, faBars, faClose, faCode, faDiamond, faHome, faTimes } fr
 import Header from '../../Header/Header';
 import { faCarSide } from '@fortawesome/free-solid-svg-icons/faCarSide';
 import { faReact, faUikit, faUncharted } from '@fortawesome/free-brands-svg-icons';
+import { faImage } from '@fortawesome/free-regular-svg-icons';
 
-const SideBar = () =>{
+const SideBar = () => {
 
-    const[isOpen, setOpen] = useState(true)
-    const handleToggle = ()=>{
+    const [isOpen, setOpen] = useState(true)
+    const handleToggle = () => {
         setOpen(!isOpen)
     }
 
-    return(
-        <div>
-        <button type='button' className='toggle-button bg-transparent' onClick={handleToggle}>
-        <FontAwesomeIcon icon={isOpen ? faBars :  faClose} />
-        </button>
+    return (
+        <div className=' position-relative'>
 
-        {/* side-bar */}
+            {/* side-bar */ }
 
-            <div className={`side-bar rounded-0 shadow-sm ${isOpen ? 'open' : 'closed'}`}>
+            <div className={ `side-bar rounded-0 shadow-sm ${isOpen ? 'open' : 'closed'}` }>
                 <div className='brand-info'>
-                <a href="#" className='navbar-brand'>
-                <img src={require('../../assets/images/falcon_brand.png')} className='img-fluid'
-                 alt="react_brand" />
-                 <h1 className='font-brand'>React Dashboard</h1>
-            </a>
+                    <a href="#" className='navbar-brand'>
+                        <img src={ require('../../assets/images/falcon_brand.png') } className='img-fluid'
+                            alt="react_brand" />
+                        <h1 className='font-brand'>React Dashboard</h1>
+                    </a>
+                    <button type='button' className='toggle-button bg-transparent' onClick={ handleToggle }>
+                        <FontAwesomeIcon icon={ isOpen ? faBars : faClose } />
+                    </button>
                 </div>
                 <ul className='navbar-nav ms-auto py-2'>
                     <li className=''>
@@ -36,44 +37,48 @@ const SideBar = () =>{
                     <li className='nav-item'><i class="fa-light fa-arrow-right"></i>
                         <Link className='nav-link ps-3' to='/dashboard'>
                             <span className='me-1'>
-                                <FontAwesomeIcon icon={faHome}/></span> Dashboard
+                                <FontAwesomeIcon icon={ faHome } /></span> Dashboard
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link className='nav-link ps-3' to='/cards'>
-                           <span className='me-1'><FontAwesomeIcon icon={faReact}/></span> React Hooks
+                            <span className='me-1'><FontAwesomeIcon icon={ faReact } /></span> React Hooks
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link className='nav-link ps-3' to="/newspost">
-                           <span className='me-1'><FontAwesomeIcon icon={faCode}/></span> HTML Info
+                            <span className='me-1'><FontAwesomeIcon icon={ faCode } /></span> HTML Info
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link className='nav-link ps-3'>
                             <span className='me-1'>
-                                <FontAwesomeIcon icon={faDiamond} />
+                                <FontAwesomeIcon icon={ faDiamond } />
                             </span> Base UI
-                                                    
+
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link className="nav-link ps-3" to="/breed">
+                            <FontAwesomeIcon icon={ faImage } /> <span>Breed Image</span>
                         </Link>
                     </li>
                 </ul>
             </div>
 
-        {/* end */}
+            {/* end */ }
 
-        {/* outlet */}
-        {/* <div className=''>
+            {/* outlet */ }
+            {/* <div className=''>
                     <Header />
                 </div> */}
-                <Header />
-        <div className={`${isOpen ? 'content-col' : 'container-fluid'}`}>
-            
-            <Outlet/>
-        </div>
-        {/* end */}
 
-    </div>
+            {/* <div className={ `${isOpen ? 'content-col' : 'container-fluid'}` }>
+                <Outlet />
+            </div> */}
+            {/* end */ }
+
+        </div>
     )
 }
 

@@ -6,6 +6,11 @@ export const ThemeContext = createContext()
 export const ThemeProvider = ({children})=>{
 
     const [theme, setTheme] = useState(()=>localStorage.getItem('app-theme' || 'light'))
+    const [bgcolor, setBgColor] = useState('red')
+
+    const toggleColor=()=>{
+        setBgColor((prev) => (prev === 'red' ? 'block' : 'red'))
+    }
 
     // global-api-integration //
 
@@ -32,7 +37,7 @@ export const ThemeProvider = ({children})=>{
     }, [theme])
     
     return(
-        <ThemeContext.Provider value={{theme, setTheme, api}}>
+        <ThemeContext.Provider value={{theme, setTheme, api, toggleColor, bgcolor}}>
             {children}
         </ThemeContext.Provider>
     )
