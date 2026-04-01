@@ -43,10 +43,10 @@ body {
     --ct-topbar-bg: #fff;
     --ct-text-white: #fff;
     --ct-text-dark: #2E4666;
-    --ct-side-text: #8391a2;
+    --ct-side-text: #fff;
     --ct-box-shadow: 0px 0px 35px 0px rgba(154, 161, 171, 0.15);
     // font-sizes //
-    --font-size14: clamp(0.5rem, 1rem, 0.9rem);
+    --font-size14: clamp(0.5rem, 0.7rem, 0.9rem);
     --font-size16: clamp(1rem, 1.25rem, 0.5rem);
     // end //
 }
@@ -54,21 +54,21 @@ body {
 :root,
 [data-bs-theme=light] {
     --ct-body-bg: #f3f6fd;
-    --ct-sidebar-bg: #353D53;
+    --ct-sidebar-bg: #151529;
     --ct-brand-bg: #EEE9E7;
     --ct-text-white: #fff;
     --ct-topbar-bg: #fff;
     --ct-text-info: #2E4666;
-    --ct-side-text: #8391a2;
+    --ct-side-text: #fff;
     --ct-secondary-color: #2a2b3f;
 }
 
 [data-bs-theme=dark] {
     --ct-body-bg: #263753;
-    --ct-sidebar-bg: #2E4666;
+    --ct-sidebar-bg: #212529;
     --ct-brand-bg: #162133;
     --ct-text-info: #fff;
-    --ct-side-text: #8391a2;
+    --ct-side-text: #74C224;
     --ct-topbar-bg: #232528;
 }
 
@@ -312,7 +312,7 @@ picture {
                 font-weight: 500;
                 text-transform: uppercase;
                 letter-spacing: .05em;
-                line-height: 1.5rem;
+                padding: 1rem 1.5rem;
                 &:hover {
                     transition: all 0.3s ease-in-out;
                     color: #fff !important;

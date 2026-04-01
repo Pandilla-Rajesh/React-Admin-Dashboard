@@ -3,27 +3,27 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext()
 
-export const ThemeProvider = ({children})=>{
+export const ThemeProvider = ({ children }) => {
 
-    const [theme, setTheme] = useState(()=>localStorage.getItem('app-theme' || 'light'))
+    const [theme, setTheme] = useState(() => localStorage.getItem('app-theme' || 'light'))
     const [bgcolor, setBgColor] = useState('red')
 
-    const toggleColor=()=>{
+    const toggleColor = () => {
         setBgColor((prev) => (prev === 'red' ? 'block' : 'red'))
     }
 
     // global-api-integration //
 
     const api = axios.create({
-        baseURL:'https://jsonplaceholder.typicode.com/',
-        headers:{
-             'Content-Type': 'application/json'
+        baseURL: 'https://jsonplaceholder.typicode.com/',
+        headers: {
+            'Content-Type': 'application/json'
         }
     })
 
     // end //
 
-    useEffect(()=>{
+    useEffect(() => {
         // document.documentElement.setAttribute('data-bs-theme', theme)
         // document.documentElement.setAttribute('data-layout-mode', theme)
         const html = document.documentElement
@@ -35,12 +35,12 @@ export const ThemeProvider = ({children})=>{
         html.setAttribute('data-sidenav-size', 'condensed')
         localStorage.setItem('app-theme', theme)
     }, [theme])
-    
-    return(
-        <ThemeContext.Provider value={{theme, setTheme, api, toggleColor, bgcolor}}>
-            {children}
+
+    return (
+        <ThemeContext.Provider value={ { theme, setTheme, api, toggleColor, bgcolor } }>
+            { children }
         </ThemeContext.Provider>
     )
 }
 
-export const useTheme = ()=>useContext(ThemeContext)
+export const useTheme = () => useContext(ThemeContext)

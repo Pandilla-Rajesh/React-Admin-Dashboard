@@ -39,19 +39,22 @@ const Header = () => {
 
     return (
         <nav className="navbar fixed-top navbar-expand-lg shadow-sm bg-body-tertiary">
-            <div className='container'>
+            <div className='container-fluid'>
+                <a href="/" className=' navbar-brand'>
+                    <img src={ require('../assets/images/groca_brand.png') } alt="grocery_brand"
+                        loading='lazy' />
+                </a>
                 <button type='button' className='navbar-toggler' data-bs-toggle='collapse'
                     data-bs-target='navMenu' aria-expanded="false" aria-controls='navbarToggle'>
                     <span className='navbar-toggler-icon'></span>
                 </button>
                 <div className='collapse navbar-collapse' id='navMenu'>
-                    <div className='d-flex align-center justify-content-between w-100'>
+                    <div className='d-flex align-center justify-content-end w-100'>
                         {/* <div>
                        <button onClick={handleToggle}>
                            <FontAwesomeIcon icon={isopen ? faBars : faTimes} />
                         </button>                        
                     </div> */}
-                        <div></div>
 
                         <div className='d-flex align-items-center justify-content-center gap-3'>
 
@@ -74,7 +77,8 @@ const Header = () => {
                                 <button onClick={ toggleTheme } className='btn bg-transparent'
                                     title={ `switch to ${theme === 'light' ? 'dark' : 'light'} mode` }>
                                     <span className=''>
-                                        { theme === 'light' ? <FontAwesomeIcon icon={ faMoon } /> : <FontAwesomeIcon icon={ faSun } /> }
+                                        { theme === 'light' ? <FontAwesomeIcon icon={ faMoon } /> :
+                                            <FontAwesomeIcon icon={ faSun } /> }
                                     </span>
                                 </button>
 

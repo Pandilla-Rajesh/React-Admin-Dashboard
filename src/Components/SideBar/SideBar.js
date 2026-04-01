@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight, faBars, faClose, faCode, faDiamond, faHome, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../Header/Header';
@@ -32,26 +32,34 @@ const SideBar = () => {
                 </div>
                 <ul className='navbar-nav ms-auto py-2'>
                     <li className=''>
-                        <span className='side-nav-tl'>Navigation</span>
-                    </li>
-                    <li className='nav-item'><i class="fa-light fa-arrow-right"></i>
-                        <Link className='nav-link ps-3' to='/dashboard'>
-                            <span className='me-1'>
-                                <FontAwesomeIcon icon={ faHome } /></span> Dashboard
-                        </Link>
+                        <span className='side-nav-tl'>Menu</span>
                     </li>
                     <li className='nav-item'>
-                        <Link className='nav-link ps-3' to='/cards'>
+                        <i class="fa-light fa-arrow-right"></i>
+                        {/* <Link className='nav-link' to='/dashboard'>
+                            <span className='me-1'>
+                                <FontAwesomeIcon icon={ faHome } /></span> Dashboard
+                        </Link> */}
+                        <NavLink to={ { pathname: '/dashboard' } }
+                            className={ ({ isActive }) => isActive ? 'nav-item' : 'text-white' }>
+                            <span className='nav-link'>
+                                <FontAwesomeIcon icon={ faHome } />
+                                <strong className='ms-2'>Dashboard</strong>
+                            </span>
+                        </NavLink>
+                    </li>
+                    <li className='nav-item'>
+                        <Link className='nav-link ' to='/cards'>
                             <span className='me-1'><FontAwesomeIcon icon={ faReact } /></span> React Hooks
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link className='nav-link ps-3' to="/newspost">
+                        <Link className='nav-link ' to="/newspost">
                             <span className='me-1'><FontAwesomeIcon icon={ faCode } /></span> HTML Info
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link className='nav-link ps-3'>
+                        <Link className='nav-link '>
                             <span className='me-1'>
                                 <FontAwesomeIcon icon={ faDiamond } />
                             </span> Base UI
@@ -59,8 +67,10 @@ const SideBar = () => {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link className="nav-link ps-3" to="/breed">
-                            <FontAwesomeIcon icon={ faImage } /> <span>Breed Image</span>
+                        <Link className="nav-link " to="/breed">
+                            <span className='me-1'>
+                                <FontAwesomeIcon icon={ faImage } />
+                            </span>Breed Image
                         </Link>
                     </li>
                 </ul>
