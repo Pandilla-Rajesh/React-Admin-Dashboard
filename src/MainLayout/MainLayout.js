@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import Header from '../Header/Header'
 import SideBar from '../Components/SideBar/SideBar'
-import MainHeader from '../MainHeader/MainHeader'
 import { Outlet } from 'react-router-dom'
-import Login from '../Components/Login/Login'
 
 const MainLayout = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     // <>
@@ -38,26 +36,16 @@ const MainLayout = () => {
 
     <>
       <div className="app-layout">
-        {/* Conditional Header */ }
-        {/* <header>
-          {isLoggedIn ? 
-          setIsLoggedIn(true) ?? "" :  <MainHeader /> }
-        </header> */}
+        <Header />
 
         <div className="content-area">
-          {/* { isLoggedIn ? setIsLoggedIn(false) ?? <SideBar /> : <Header /> } */ }
+          <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
 
-          <SideBar />
-
-          <main>
-            <div className='page-content'>
-              <div>
-                <Header />
-              </div>
-              <div>
-                <Outlet />
-              </div>
-            </div>
+          <main
+            className={`page-content ${isOpen ? 'sidebar-open' : 'sidebar-closed'}`}
+            style={{ paddingTop: 'var(--ct-topbar-height)' }}
+          >
+            <Outlet />
           </main>
         </div>
 

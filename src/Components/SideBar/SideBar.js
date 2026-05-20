@@ -13,51 +13,29 @@ import {
 import { faReact } from '@fortawesome/free-brands-svg-icons'
 import { faImage } from '@fortawesome/free-regular-svg-icons'
 
-const SideBar = () => {
-
-    const [isOpen, setOpen] = useState(false)
+const SideBar = ({ isOpen, setIsOpen }) => {
 
     const handleToggle = () => {
-        setOpen(!isOpen)
+        setIsOpen(!isOpen)
     }
 
     return (
         <div className='position-relative'>
 
             <div className={`side-bar shadow-sm ${isOpen ? 'open' : 'closed'}`}>
-
-                <div className='brand-info d-flex justify-content-between align-items-center'>
-
-                    <a href="#" className='navbar-brand'>
-                        <img
-                            src={require('../../assets/images/falcon_brand.png')}
-                            className='img-fluid'
-                            alt="react_brand"
-                        />
-
-                        <h1 className='font-brand'>
-                            React Dashboard
-                        </h1>
-                    </a>
-
-                    <button
+                
+                <ul className='navbar-nav ms-auto'>
+                    <div className=' position-relative'>
+                     <button
                         type='button'
-                        className='toggle-button bg-transparent border-0'
+                        className='toggle-button border-0'
                         onClick={handleToggle}
                     >
                         <FontAwesomeIcon
                             icon={isOpen ? faClose : faBars}
                         />
                     </button>
-
                 </div>
-
-                <ul className='navbar-nav ms-auto py-2'>
-
-                    <li>
-                        <span className='side-nav-tl'>Menu</span>
-                    </li>
-
                     <li className='nav-item'>
 
                         <NavLink

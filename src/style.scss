@@ -37,6 +37,7 @@ body {
     --ct-topbar-height: 70px;
     --ct-brand-bg: #EEE9E7;
     --ct-sidebar-bg: #fff;
+    --ct-sidebar-collapsed-width: 70px;
     --ct-select-bg: #ff5e00;
     --ct-font-family: "Poppins", sans-serif;
     --ct-bg-white: #fff;
@@ -98,14 +99,32 @@ picture {
 }
 
 .p-top {
-    padding-top: 83px;
+    // padding-top: 83px;
 }
 
 .page-content {
     position: relative;
     min-height: calc(100vh - var(--ct-topbar-height));
-    // width: var(--ct-nav-left-width);
     margin-left: var(--ct-nav-left-width);
+    width: calc(100% - var(--ct-nav-left-width));
+    // padding-top: var(--ct-topbar-height);
+    transition: all 0.3s ease-in-out;
+    &.sidebar-closed {
+        margin-left: var(--ct-sidebar-collapsed-width);
+        width: calc(100% - var(--ct-sidebar-collapsed-width));
+    }
+    &.sidebar-open {
+        margin-left: var(--ct-nav-left-width);
+        width: calc(100% - var(--ct-nav-left-width));
+    }
+}
+
+.app-layout {
+    min-height: 100vh;
+}
+
+.content-area {
+    position: relative;
 }
 
 .rt-header {
@@ -251,13 +270,14 @@ picture {
 
 .side-bar {
     background-color: var(--ct-sidebar-bg);
-    width: min(100%, 230px);
+    width: var(--ct-nav-left-width);
     transition: all 0.3s ease-in-out;
     color: #fff;
-    top: 84px;
     position: fixed;
-    height: 100vh;
-    top: 0;
+    top: var(--ct-topbar-height);
+    height: calc(100vh - var(--ct-topbar-height));
+    z-index: 1050;
+
     @media only screen and (max-width: 768px) and (min-width: 320px) {
         .sidebar {
             width: 100%;
@@ -265,6 +285,7 @@ picture {
             top: 68px;
         }
     }
+
     .brand-info {
         display: flex;
         align-items: center;
@@ -286,13 +307,15 @@ picture {
             }
         }
     }
-  &.open {
-        transform: translateX(0%);
+
+    &.open {
+        width: var(--ct-nav-left-width);
     }
 
     &.closed {
-        transform: translateX(100%);
+        width: var(--ct-sidebar-collapsed-width);
     }
+
     .navbar-nav {
         .side-nav-tl {
             letter-spacing: .08em;
@@ -310,16 +333,62 @@ picture {
                 text-transform: uppercase;
                 letter-spacing: .05em;
                 padding: 1rem 1.5rem;
+                display: flex;
+                align-items: center;
+                transition: all 0.3s ease-in-out;
                 &:hover {
-                    transition: all 0.3s ease-in-out;
                     color: #fff !important;
                 }
             }
         }
     }
-}
 
-.side-bar {
+    &.closed {
+        .brand-info {
+            justify-content: center;
+            .navbar-brand {
+                display: none;
+            }
+        }
+        .navbar-nav {
+            .side-nav-tl {
+                display: none;
+            }
+            .nav-item {
+                .nav-link {
+                    justify-content: center;
+                    padding: 1rem 0;
+                    strong,
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .toggle-button {
+            right: -20px;
+        }
+    }
+
+    .toggle-button {
+        position: absolute;
+        top: 20px;
+        right: -18px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background: #111827;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        @media (max-width: 768px) {
+            padding: 19px 20px;
+        }
+    }
+
     .navbar-toggler {
         position: fixed;
         top: 10px;
@@ -336,14 +405,12 @@ picture {
 
 .toggle-button {
   position: absolute;
-    top: 20px;
-    right: -45px;
+    top: 0px;
+    right: -10px;
     width: 40px;
     height: 40px;
     border: none;
-    border-radius: 50%;
-    background: #111827;
-    color: #fff;
+    color: #152829;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -363,7 +430,6 @@ picture {
     z-index: 1000;
     transition: all 0.3s ease;
     background-color: var(--ct-topbar-bg);
-    .topbar {}
 }
 
 .sticky-header {
