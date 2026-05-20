@@ -10,7 +10,10 @@ const MainHeader=()=>{
         <header className='rt-header fixed-top'>
            <nav className='rt-nav'>
                <a href="/" className='rt-brand'>
-                  <img src={require('../assets/images/rhl_band.png')} alt="React-admin-logo" className='img-fluid' loading='lazy' />
+                  <img src={require('../assets/images/logo_photon.svg')} 
+                  alt="React-admin-logo" 
+                  className='img-fluid' 
+                  loading='lazy' />
                </a>
                <div className='rt-ex-btn'>
                   <button>Explore</button>

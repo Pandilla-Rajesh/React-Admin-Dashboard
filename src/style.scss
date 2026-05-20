@@ -33,10 +33,10 @@ body {
 
 :root {
     --ct-body-bg: #f3f6fd;
-    --ct-nav-left-width: 260px;
+    --ct-nav-left-width: 245px;
     --ct-topbar-height: 70px;
     --ct-brand-bg: #EEE9E7;
-    --ct-sidebar-bg: #353D53;
+    --ct-sidebar-bg: #fff;
     --ct-select-bg: #ff5e00;
     --ct-font-family: "Poppins", sans-serif;
     --ct-bg-white: #fff;
@@ -54,12 +54,12 @@ body {
 :root,
 [data-bs-theme=light] {
     --ct-body-bg: #f3f6fd;
-    --ct-sidebar-bg: #151529;
+    --ct-sidebar-bg: #fff;
     --ct-brand-bg: #EEE9E7;
     --ct-text-white: #fff;
     --ct-topbar-bg: #fff;
     --ct-text-info: #2E4666;
-    --ct-side-text: #fff;
+    --ct-side-text: #152829;
     --ct-secondary-color: #2a2b3f;
 }
 
@@ -98,7 +98,7 @@ picture {
 }
 
 .p-top {
-    padding-top: 100px;
+    padding-top: 83px;
 }
 
 .page-content {
@@ -286,15 +286,12 @@ picture {
             }
         }
     }
-    &.closed {
-        transform: translate(0%);
+  &.open {
+        transform: translateX(0%);
     }
-    &.open {
-        transform: translate(0%);
-        top: 0;
-        @media (max-width: 768px) {
-            top: 0;
-        }
+
+    &.closed {
+        transform: translateX(100%);
     }
     .navbar-nav {
         .side-nav-tl {
@@ -338,15 +335,19 @@ picture {
 }
 
 .toggle-button {
-    position: fixed;
-    top: 0;
-    left: 225px;
-    z-index: 1000;
+  position: absolute;
+    top: 20px;
+    right: -45px;
+    width: 40px;
+    height: 40px;
     border: none;
-    padding: 27px 20px;
+    border-radius: 50%;
+    background: #111827;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s;
     @media (max-width: 768px) {
         padding: 19px 20px;
     }
@@ -478,3 +479,4 @@ picture {
         }
     }
 }
+
