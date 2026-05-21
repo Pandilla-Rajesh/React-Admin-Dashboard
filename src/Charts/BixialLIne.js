@@ -26,7 +26,7 @@ const data = [
 
 export default function BixialLIne() {
   return (
-    <div style={{ width: '100%', height: 400 }}>
+    <div style={{ width: '100%', height: 300 }}>
       <ResponsiveContainer>
         <LineChart data={data}>
           

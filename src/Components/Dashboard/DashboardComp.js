@@ -175,7 +175,7 @@ const DashboardComp = () => {
             </div>
 
                  <div className='row'>
-            <div className='col-xl-5 col-xxl-6'>
+            <div className='col-xl-5 col-xxl-6 mb-3'>
                 <div className=' card'>
                     <div className=' card-header bg-transparent'>
                         <div className=''>
@@ -187,11 +187,43 @@ const DashboardComp = () => {
                     </div>
                 </div>
             </div>
-            <div className='col-xl-3 col-md-6'>
-                kjdsnckd
+            <div className='col-xl-3 col-md-6 mb-3'>
+                <div className='card h-100'>
+                    <div className='card-body text-center'>
+                        <div className=' d-flex justify-content-between flex-column h-100'>
+                            <img src="https://srbthemes.kcubeinfotech.com/mirbal/html/ltr/assets/images/dashboard/social-media/upgrade-plan.png" 
+                            alt="image-preview" loading='lazy' className=' img-fluid' />
+                            <div className=' mt-auto'>
+                                 <h5>Upgrade Your Plan..!</h5>
+                            <p>Unlock powerful features to boost your social media performance insights.</p>
+                            <button type='button' className='btn btn-danger'>Upgrade Now</button>
+                            </div>
+                        </div>
+                           
+                    </div>
+                </div>
             </div>
-            <div className='col-xl-4 col-md-6'>
-                sncjvvj
+            <div className='col-xl-4 col-md-6 mb-3'>
+                <div className='card bg-black text-white border-0 h-100'>
+                    <div className='card-body'>
+                        <span className=' badge bg-success float-end'>5.1%</span>
+                        <h5 className=' fs-6 text-white mb-5'>Facebook Campaign</h5>
+                        <p className=' text-opacity-25 mb-5'>Our latest Facebook campaign focuses on driving user 
+                            engagement and brand.</p>
+                        <div className='row text-center mb-5'>
+                            <div className=' col-md-6'>
+                                <div className=' border-end border-light'>
+                                <h5>240</h5>
+                                <p>Posts</p>
+                            </div>
+                            </div>
+                            <div className=' col-6'>
+                                 <h5>63%</h5>
+                                <p>Engagement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
