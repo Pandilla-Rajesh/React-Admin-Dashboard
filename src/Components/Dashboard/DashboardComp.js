@@ -2,17 +2,21 @@
 import { faFacebookSquare, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons/faTwitterSquare'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { user } from 'fontawesome'
+import { search, user } from 'fontawesome'
 import React, { useEffect, useState } from 'react'
+import { LineChart } from 'recharts'
+import Example from '../../Charts/BixialLIne'
+import BixialLIne from '../../Charts/BixialLIne'
 
 const DashboardComp = () => {
 
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState({})
+    const [error, setError] = useState(null)
 
-    const getUsers = async()=>{
+     const getUsers = async()=>{
         setLoading(false)
         try{
 
@@ -31,6 +35,25 @@ const DashboardComp = () => {
     useEffect(()=>{
         getUsers()
     }, [])
+
+    const [search, setSearch] = useState('')
+
+    if(error) return <p>{error.message}</p>
+
+    const handleSearch = (e) =>{
+        
+        setSearch(e.target.value)
+    }
+
+   const filterUsers = users.filter((user)=>
+
+        user.id.toString().includes(search) ||
+        user.firstName.toLowerCase().includes(search.toLowerCase()) ||
+        user.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        user.email.toLowerCase().includes(search.toLowerCase())
+)
+
+   
 
     return (
      <section className='p-3 bg-white rounded-3 border-2'>
@@ -151,7 +174,52 @@ const DashboardComp = () => {
                 </div>
             </div>
 
-        <div className=' table-responsive'>
+                 <div className='row'>
+            <div className='col-xl-5 col-xxl-6'>
+                <div className=' card'>
+                    <div className=' card-header bg-transparent'>
+                        <div className=''>
+                            <h5 className='fs-6 mb-0'>Instagram Followers Growth</h5>
+                        </div>
+                    </div>
+                    <div className=' card-body'>
+                        <BixialLIne />
+                    </div>
+                </div>
+            </div>
+            <div className='col-xl-3 col-md-6'>
+                kjdsnckd
+            </div>
+            <div className='col-xl-4 col-md-6'>
+                sncjvvj
+            </div>
+        </div>
+
+       <div className=' custom-card mb-3'>
+         <div className='card h-100'>
+            <div className=' card-header bg-transparent'>
+                <h5 className=' card-title'>Get Users List Search</h5>
+                <div className=' position-relative'>
+                    <input type="text"
+                    className=' form-control'
+                    value={search}
+                    onChange={handleSearch}
+                    placeholder='Search user...'
+                    />
+                    {search.length>0 && (
+                        <button type='button'
+                        className='btn btn-sm position-absolute top-50 
+                        end-0 ms-2 
+                        translate-middle-y'
+                        onClick={()=>setSearch('')}
+                        >
+                            <FontAwesomeIcon icon={faTimes}/>
+                        </button>
+                    )}
+                </div>
+            </div>
+            <div className=' card-body'>
+                        <div className=' table-responsive'>
             <table className=' table table-bordered overflow-hidden rounded-3'>
                 <thead>
                     <tr>
@@ -167,8 +235,8 @@ const DashboardComp = () => {
                     {loading ? (
                         <p>...Loading</p>
                     ) : (
-                        users.length > 0 ? (
-                            users.slice(0, 20)?.map((user, index)=>(
+                        filterUsers.length > 0 ? (
+                            filterUsers.slice(0, 5)?.map((user, index)=>(
                                 <tr key={index}>
                                     <td>{user.id}</td>
                                     <td>{user.firstName}</td>
@@ -187,13 +255,16 @@ const DashboardComp = () => {
                             ))
                         ) :(
                           <tr>
-                            <td colSpan="5">NoData Found</td>
+                            <td colSpan="6" className='text-center'>NoData Found</td>
                           </tr>
                         )
                     )}
                 </tbody>
             </table>
         </div>
+            </div>
+        </div>
+       </div>
 
         </article>
      </section>

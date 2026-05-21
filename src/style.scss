@@ -546,3 +546,35 @@ picture {
     }
 }
 
+.custom-card{
+    position: relative;
+    .card{
+        .card-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .card-title{
+                position: relative;
+                font-size: var(--font-size16);
+                color: var(--ct-secondary-color);
+                margin-bottom: 0;
+                &::before{
+                    content: "";
+                       position: absolute;
+                    top: 50%;
+                    width: 4px;
+                    height: 24px;
+                    left: -10px;
+                    transform: translateY(-50%);
+                    background: var(--ct-select-bg);
+                }
+            }
+            .form-control{
+                font-size: var(--font-size14);
+                ::placeholder{
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}
