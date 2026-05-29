@@ -16,6 +16,9 @@ const DashboardComp = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+    const [search, setSearch] = useState('')
+    const [debounsedSearch, setDebouncedSearch] = useState('')
+
      const getUsers = async()=>{
         setLoading(false)
         try{
@@ -36,21 +39,26 @@ const DashboardComp = () => {
         getUsers()
     }, [])
 
-    const [search, setSearch] = useState('')
+useEffect(()=>{
+    const timer = setTimeout(()=>{
+        setDebouncedSearch(search)
+    }, 2000)
+    console.log(timer, 'set the time value')
+    return () => clearTimeout(timer)
+}, [search])
 
     if(error) return <p>{error.message}</p>
 
     const handleSearch = (e) =>{
-        
         setSearch(e.target.value)
     }
 
    const filterUsers = users.filter((user)=>
 
         user.id.toString().includes(search) ||
-        user.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        user.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        user.email.toLowerCase().includes(search.toLowerCase())
+        user.firstName.toLowerCase().includes(debounsedSearch.toLowerCase()) ||
+        user.lastName.toLowerCase().includes(debounsedSearch.toLowerCase()) ||
+        user.email.toLowerCase().includes(debounsedSearch.toLowerCase())
 )
 
    

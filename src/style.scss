@@ -578,3 +578,43 @@ picture {
         }
     }
 }
+
+// sign-in-page//
+
+.info-sign-hero{
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop') no-repeat center;
+    width: 100%;
+    height: 100vh;
+    &::before{
+        background: linear-gradient(to top, #278b38, #3eb8068d, #1b7405);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: "";
+        inset: 0;
+    }
+    .info-sign-page{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        z-index: 99;
+        position: relative;
+        .info-sign-view{    
+            padding: 2vw 3vw;
+            container-type:initial;
+            border: solid 1px var(--ct-bg-white);
+            border-radius: 2vw;
+            .form-control{
+                background: transparent;
+                &:focus{
+                    box-shadow: none;
+                    border-color: inherit;
+                }
+            }
+        }
+    }
+}
+
+// end //

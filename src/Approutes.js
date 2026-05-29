@@ -5,6 +5,7 @@ import Aboutus from './Pages/Aboutus/Aboutus.js'
 import Services from './Pages/Services/Services.js'
 import Contact from './Pages/Contact/Contact.js'
 import DashboardComp from './Components/Dashboard/DashboardComp.js'
+import SignIn from './Pages/SignIn/SignIn.js'
 
 const Login = lazy(() => import('./Components/Login/Login.js'))
 const MainLayout = lazy(() => import('./MainLayout/MainLayout.js'))
@@ -15,10 +16,10 @@ const BreedImages = lazy(() => import('./Components/BreedImages/BreedImages.js')
 function Approutes() {
 
     const router = createBrowserRouter([
-        {
-            path: '/', element: (<Suspense fallback={ <div>...Loading</div> }><MainLayout /></Suspense>),
+        {index:true, element:<Suspense fallback={<div>...Loading</div>}><SignIn/></Suspense>},
+        {path:'sign', element:<Suspense fallback={<div>...Loading</div>}><SignIn/></Suspense>},
+        { path: '/', element: (<Suspense fallback={ <div>...Loading</div> }><MainLayout /></Suspense>),
             children: [
-                { index: true, element: (<Suspense fallback={ <div>...Loading</div> }><Home /></Suspense>) },
                 { path: 'home', element: (<Suspense fallback={ <div>...Loading</div> }><Home /></Suspense>) },
                 { path: 'aboutus', element: (<Suspense fallback={ <div>...Loading</div> }><Aboutus /></Suspense>) },
                 { path: 'services', element: (<Suspense fallback={ <div>...Loading</div> }><Services /></Suspense>) },
