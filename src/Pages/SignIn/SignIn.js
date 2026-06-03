@@ -1,6 +1,6 @@
 import Password from 'antd/es/input/Password'
 import { sign, signIn } from 'fontawesome'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const SignIn = ()=>{
@@ -24,20 +24,49 @@ const SignIn = ()=>{
         console.log(formData, 'display the signin details')
     }, [])
 
+    // const isFormValid =
+    // formData.username.trim() && formData.Password.trim()
+
+    const isFormValid = useMemo(()=>{
+        return(
+            formData.username.trim() !== "" &&
+            formData.Password.trim() !== ""
+        )
+    }, [formData.username, formData.Password])
+
     const handleSubmit = useCallback((e)=>{
         e.preventDefault()
-        alert(JSON.stringify(formData, null, 2))
         const errors = {}
+        
         if(!formData.username.trim()){
-            error.username = 'Please enter username'
+            errors.username = 'Please enter username'
+        }else if(!/^[a-zA-Z0-9_@]+$/.test(formData.username)){
+            errors.username = 'username contain under score with numbers'
         }
-    })
+
+        if(!formData.Password.trim()){
+            errors.Password = 'please enter password'
+        } else if(formData.Password.length < 6){
+            errors.Password = 'please enter must be at least six characters'
+        }
+
+        // setError(errors)
+
+         alert(JSON.stringify(formData, null, 2))
+
+         if(Object.keys(errors).length === 0){
+            navigate('/dashboard')
+         }else{
+            setError(errors)
+         }
+
+    }, [formData])
 
     return(
        <section className='info-sign-hero'>
          <article className=' container ms-auto vh-100'>
             <div className='info-sign-page row'>
-                <div className=' col-md-4 col-xl-4 col-lg-4 col-sm'>
+                <div className=' col-md-5 col-xl-5 col-lg-5 col-sm-12'>
                     <div className='info-sign-view'>
                         <h2>Welcome to the Signin Page</h2>
                         <form action="" onSubmit={handleSubmit}>
@@ -49,7 +78,9 @@ const SignIn = ()=>{
                                 onChange={handleChange}
                                 className=' form-control'
                                 placeholder='Enter UserName' />
-                                {error.username && <small className=' text-danger'>{error.username}</small>}
+                                {error.username && 
+                                <small className=' text-white'>
+                                    {error.username}</small>}
                             </div>
                             <div className='mb-3'>
                                 <label for="" className='form-label'>Password</label>
@@ -61,9 +92,19 @@ const SignIn = ()=>{
                                  value={formData.Password}
                                  placeholder='enter password'
                                 />
+                                <p>{error.Password && 
+                                    <small className='text-white'>
+                                    {error.Password}</small>}</p>
                             </div>
                             <div>
-                                <button type='submit' className='btn btn-dark w-100'>Login</button>
+                                <button 
+                                type='submit' 
+                                className='btn btn-dark w-100'
+                                disabled={!isFormValid}
+                                // disabled={!formData.username.trim() || !formData.Password.trim()}
+                                >
+                                    {isFormValid ? 'Submit' : 'Login'}
+                                </button>
                             </div>
                         </form>
                     </div>

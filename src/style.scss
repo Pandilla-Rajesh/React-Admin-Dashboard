@@ -44,6 +44,7 @@ body {
     --ct-topbar-bg: #fff;
     --ct-text-white: #fff;
     --ct-text-dark: #2E4666;
+    --ct-green-bg:#249541;
     --ct-side-text: #fff;
     --ct-box-shadow: 0px 0px 35px 0px rgba(154, 161, 171, 0.15);
     // font-sizes //
@@ -602,12 +603,28 @@ picture {
         z-index: 99;
         position: relative;
         .info-sign-view{    
+            position: relative;
             padding: 2vw 3vw;
             container-type:initial;
             border: solid 1px var(--ct-bg-white);
+            // background: var(--ct-bg-white);
             border-radius: 2vw;
+            &::before{
+                  position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    inset: 0;
+    background: var(--ct-green-bg);
+    opacity: .5;
+    border-radius: 2vw;
+    overflow: hidden;
+
+            }
             .form-control{
                 background: transparent;
+                color: var(--ct-text-white);
                 &:focus{
                     box-shadow: none;
                     border-color: inherit;

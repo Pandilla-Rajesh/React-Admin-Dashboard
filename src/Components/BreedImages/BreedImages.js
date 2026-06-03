@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import TimeStartStop from '../TimeStartStop/TimeStartStop'
 
 const BreedImages = () => {
 
@@ -39,6 +40,9 @@ const BreedImages = () => {
         <section className='p-0 bg-white'>
             <article className='container'>
                 <div className='row align-content-center gx-5 g-2'>
+                    <div>
+                        <TimeStartStop/>
+                    </div>
                     <div className='p-3'>
                         <h2 className=' text-uppercase display-6 fw-lighter ps-3'>Welcome to the Breed Images
                             <span className=' d-block'>to the Display</span>
