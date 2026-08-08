@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from '../../ContextMain'
+// import { ThemeContext } from '../../ContextMain'
 
 const Home = () =>{
     return(
@@ -23,26 +23,26 @@ const Home = () =>{
                         </span>
                     </p>
                 </div>
-                <ColorButton/>
+                {/* <ColorButton/> */}
             </article>
         </section>
     )
 }
 
-const ColorButton = () =>{
+// const ColorButton = () =>{
 
-    const {bgcolor, toggleColor} = useContext(ThemeContext)
+//     const {bgcolor, toggleColor} = useContext(ThemeContext)
 
-    return(
-        <>
-        <div>
-            <button onClick={toggleColor}
-            style={{backgroundColor:bgcolor,
-                color: bgcolor === 'white' ? 'block' : 'red'
-            }}>Toggle Color</button>
-        </div>
-        </>
-    )
-}
+//     return(
+//         <>
+//         <div>
+//             <button onClick={toggleColor}
+//             style={{backgroundColor:bgcolor,
+//                 color: bgcolor === 'white' ? 'block' : 'red'
+//             }}>Toggle Color</button>
+//         </div>
+//         </>
+//     )
+// }
 
 export default Home

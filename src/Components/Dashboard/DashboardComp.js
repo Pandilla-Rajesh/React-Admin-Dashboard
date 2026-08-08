@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { LineChart } from 'recharts'
 import Example from '../../Charts/BixialLIne'
 import BixialLIne from '../../Charts/BixialLIne'
+// import LazyComp from './LazyComp'
 
 const DashboardComp = () => {
 
@@ -235,8 +236,11 @@ useEffect(()=>{
             </div>
         </div>
 
+        <div></div>
+
        <div className=' custom-card mb-3'>
          <div className='card h-100'>
+            {/* <LazyComp/> */}
             <div className=' card-header bg-transparent'>
                 <h5 className=' card-title'>Get Users List Search</h5>
                 <div className=' position-relative'>

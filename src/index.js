@@ -6,12 +6,17 @@ import './style.scss'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './ContextMain';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <ThemeProvider value={{theme:'dark'}}>
-            <App />
+        <QueryClientProvider client={queryClient}>
+                <App />
+        </QueryClientProvider>
     </ThemeProvider>
 );
 

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import TimeStartStop from '../TimeStartStop/TimeStartStop'
+import UserList from '../UserList/UserList'
+import Users from '../../CustomHook/getUserData'
+import MultiData from '../../CustomHook/MultiApiData'
 
 const BreedImages = () => {
 
@@ -43,10 +46,17 @@ const BreedImages = () => {
                     <div>
                         <TimeStartStop/>
                     </div>
+                    <div>
+                        <Users/>
+                        <MultiData/>
+                    </div>
                     <div className='p-3'>
                         <h2 className=' text-uppercase display-6 fw-lighter ps-3'>Welcome to the Breed Images
                             <span className=' d-block'>to the Display</span>
                         </h2>
+                    </div>
+                    <div>
+                        <UserList/>
                     </div>
                 </div>
             </article>

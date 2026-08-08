@@ -5,12 +5,14 @@ const NewsPost = () => {
 
     const [inputval, setInputVal] = useState('posts')
     const [list, setList] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         setInputVal(e.target.value)
     }
 
     useEffect(() => {
+        setLoading(true)
         fetch(`https://jsonplaceholder.typicode.com/${inputval}`)
             .then((res) => res.json())
             .then((data) => {
@@ -44,7 +46,23 @@ const NewsPost = () => {
                                 </div>
                             </Form>
                             <div>
-                                { list?.map((el, index) => (
+                                {/* {loading ? (
+                                    <p>...Loading</p>
+                                ):(
+                                    list.length > 0 ?(
+                                        list.slice(0, 7).map((el, id)=>(
+
+                                            <div className='card h-100' key={list.id}>
+                                                <div className=' card-body'>
+                                                    {}
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No Data Found</p>
+                                    )
+                                )} */}
+                                {list.slice(0,7)?.map((el, index) => (
                                     <h5 key={ index }>{ el.title || el.username || el.website }</h5>
                                 )) }
                             </div>
