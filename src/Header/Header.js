@@ -39,7 +39,8 @@ const Header = () => {
 
 
     return (
-        <nav className="navbar fixed-top navbar-expand-lg shadow-sm bg-white" >
+        <nav className={`navbar navbar-expand-lg
+        ${isSticky ? " fixed-top shadow bg-light" : 'bg-info'}`} >
             <div className='container-fluid'>
                 <a href="/" className=' navbar-brand'>
                     <img src={logoPhoton} style={{width:'137px'}}

@@ -13,7 +13,8 @@ const Login = () => {
     }
 
     const [login, setLogin] = useState({...resetForm})
-    const [loading, setLoading] = useState(true)
+
+    const [loading, setLoading] = useState(false)
     const [alltodos, setAllTodos] = useState([])
 
 
@@ -29,6 +30,7 @@ const Login = () => {
     }
 
     const [error, setError] = useState({})
+    
     const handleSubmit = (event) => {
         event.preventDefault()
         alert(JSON.stringify(login, null, 2))
