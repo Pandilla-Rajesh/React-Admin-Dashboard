@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { LineChart } from 'recharts'
 import Example from '../../Charts/BixialLIne'
 import BixialLIne from '../../Charts/BixialLIne'
+import Apis from '../APIS/Apis'
 
 const DashboardComp = () => {
 
@@ -123,6 +124,9 @@ useEffect(()=>{
                             <div className=' text-center mb-2'>
                                     <h5 className='mb-1'>120000</h5>
                                     <p className=' fs-3 fw-bold'>Followers</p>
+                                    <div>
+                                        <Apis/>
+                                    </div>
                                 </div>
                             <div className='row text-center'>
                                 <div className=' col-6'>
